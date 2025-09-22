@@ -6,7 +6,7 @@
   },
   
   "schedule_config": {
-    "cycle_start_date": "2025-22-09",
+    "cycle_start_date": "2025-09-22",
     "first_day_type": "B",
     "weekdays_only": true
   },
@@ -42,44 +42,49 @@
   
   "holidays": [
     {
-      "date": "2025-09-02",
-      "name": "Labor Day",
+      "date": "2025-09-24",
+      "name": "La Mercé",
       "type": "federal_holiday"
     },
     {
-      "date": "2025-10-14",
-      "name": "Columbus Day",
+      "date": "2025-10-27",
+      "name": "No School",
       "type": "school_holiday"
     },
     {
-      "date": "2025-11-11",
-      "name": "Veterans Day",
-      "type": "federal_holiday"
-    },
-    {
-      "date": "2025-11-28",
-      "name": "Thanksgiving Day",
-      "type": "federal_holiday"
-    },
-    {
-      "date": "2025-11-29",
+      "date": "2025-11-27",
       "name": "Thanksgiving Break",
       "type": "school_holiday"
     },
     {
+      "date": "2025-11-28",
+      "name": "Thanksgiving Break",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2025-12-08",
+      "name": "La Immaculada",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2025-12-22",
+      "name": "Winter Break",
+      "type": "school_holiday"
+    },
+    {
       "date": "2025-12-23",
-      "name": "Winter Break Start",
+      "name": "Winter Break",
       "type": "school_holiday"
     },
     {
       "date": "2025-12-24",
-      "name": "Christmas Eve",
+      "name": "Winter Break",
       "type": "school_holiday"
     },
     {
       "date": "2025-12-25",
-      "name": "Christmas Day",
-      "type": "federal_holiday"
+      "name": "Winter Break",
+      "type": "school_holiday"
     },
     {
       "date": "2025-12-26",
@@ -87,7 +92,7 @@
       "type": "school_holiday"
     },
     {
-      "date": "2025-12-27",
+      "date": "2025-12-29",
       "name": "Winter Break",
       "type": "school_holiday"
     },
@@ -98,39 +103,85 @@
     },
     {
       "date": "2025-12-31",
-      "name": "New Year's Eve",
+      "name": "Winter Break",
       "type": "school_holiday"
     },
     {
       "date": "2026-01-01",
-      "name": "New Year's Day",
-      "type": "federal_holiday"
-    },
-    {
-      "date": "2026-01-20",
-      "name": "Martin Luther King Jr. Day",
-      "type": "federal_holiday"
-    },
-    {
-      "date": "2026-02-17",
-      "name": "Presidents Day",
-      "type": "federal_holiday"
-    },
-    {
-      "date": "2026-04-18",
-      "name": "Good Friday",
+      "name": "Winter Break",
       "type": "school_holiday"
     },
     {
-      "date": "2026-05-26",
-      "name": "Memorial Day",
+      "date": "2026-01-02",
+      "name": "Winter Break",
+      "type": "school_holiday"
+    },{
+      "date": "2026-01-05",
+      "name": "Winter Break",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-01-06",
+      "name": "Winter Break",
+      "type": "school_holiday"
+    },{
+      "date": "2026-01-07",
+      "name": "Winter Break",
+      "type": "school_holiday"
+    },
+
+    {
+      "date": "2026-02-09",
+      "name": "No School",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-02-23",
+      "name": "Ski Week",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-02-24",
+      "name": "Ski Week",
+      "type": "school_holiday"
+    },{
+      "date": "2026-02-25",
+      "name": "Ski Week",
+      "type": "school_holiday"
+    },{
+      "date": "2026-02-26",
+      "name": "Ski Week",
+      "type": "school_holiday"
+    },{
+      "date": "2026-02-27",
+      "name": "Ski Week",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-03-02",
+      "name": "No School",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-03-18",
+      "name": "Professional Development",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-05-01",
+      "name": "Día del Trabajador",
+      "type": "federal_holiday"
+    },
+    {
+      "date": "2026-05-25",
+      "name": "Pentecostés",
       "type": "federal_holiday"
     }
   ],
   
   "special_schedules": [
     {
-      "date": "2025-12-20",
+      "date": "2025-12-19",
       "name": "Half Day - Winter Break Prep",
       "type": "early_dismissal",
       "schedule_override": {
@@ -151,6 +202,6 @@
     "holiday_prefix": "Holiday: ",
     "current_period_prefix": "Current Period: ",
     "next_period_prefix": "Next Period: ",
-    "school_ended": "School day has ended"
+    "school_ended": "School day has ended!"
   }
 }
