@@ -15,14 +15,12 @@ a{
     border-bottom: solid 3px white;
 }
 #title{
-    font-size: 3.5rem;
-    color: hsl(358, 84%, 52%);
-    padding: 10px;
+    margin: 5px;
+    margin-left: 15px;
+    width: 200px;
+    height: 100px;
     cursor: pointer;
-    transition: font-size 0.5s ease;
-}
-#title:hover{
-    font-size: 3.7rem;
+    transition: width 0.5s ease;
 }
 #wrapper{
     display: flex;
