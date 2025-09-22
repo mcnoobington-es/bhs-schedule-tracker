@@ -1,0 +1,156 @@
+{
+  "school_info": {
+    "name": "Barcelona High School",
+    "academic_year": "2025-2026",
+    "schedule_type": "alternating_ab"
+  },
+  
+  "schedule_config": {
+    "cycle_start_date": "2025-22-09",
+    "first_day_type": "B",
+    "weekdays_only": true
+  },
+  
+  "day_types": {
+    "A": {
+      "name": "A Day",
+      "periods": [1, 2, 3],
+      "period_times": {
+        "homeroom" : {"start": "09:15", "end": "9:30"},
+        "passing_period_1": {"start": "09:30", "end": "9:40"},
+        "1": {"start": "09:40", "end": "11:00"},
+        "passing_period_2": {"start": "09:30", "end": "9:40"},
+        "2": {"start": "11:10", "end": "12:30"},
+        "lunch": {"start": "12:30", "end": "01:25"},
+        "3": {"start": "01:25", "end": "02:45"}
+      }
+    },
+    "B": {
+     "name": "A Day",
+     "periods": [4, 5, 6],
+     "period_times": {
+        "homeroom" : {"start": "09:15", "end": "9:30"},
+        "passing_period_1": {"start": "09:30", "end": "9:40"},
+        "4": {"start": "09:40", "end": "11:00"},
+        "passing_period_2": {"start": "09:30", "end": "9:40"},
+        "5": {"start": "11:10", "end": "12:30"},
+        "lunch": {"start": "12:30", "end": "01:25"},
+        "6": {"start": "01:25", "end": "02:45"}
+      }
+    }
+  },
+  
+  "holidays": [
+    {
+      "date": "2025-09-02",
+      "name": "Labor Day",
+      "type": "federal_holiday"
+    },
+    {
+      "date": "2025-10-14",
+      "name": "Columbus Day",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2025-11-11",
+      "name": "Veterans Day",
+      "type": "federal_holiday"
+    },
+    {
+      "date": "2025-11-28",
+      "name": "Thanksgiving Day",
+      "type": "federal_holiday"
+    },
+    {
+      "date": "2025-11-29",
+      "name": "Thanksgiving Break",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2025-12-23",
+      "name": "Winter Break Start",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2025-12-24",
+      "name": "Christmas Eve",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2025-12-25",
+      "name": "Christmas Day",
+      "type": "federal_holiday"
+    },
+    {
+      "date": "2025-12-26",
+      "name": "Winter Break",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2025-12-27",
+      "name": "Winter Break",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2025-12-30",
+      "name": "Winter Break",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2025-12-31",
+      "name": "New Year's Eve",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-01-01",
+      "name": "New Year's Day",
+      "type": "federal_holiday"
+    },
+    {
+      "date": "2026-01-20",
+      "name": "Martin Luther King Jr. Day",
+      "type": "federal_holiday"
+    },
+    {
+      "date": "2026-02-17",
+      "name": "Presidents Day",
+      "type": "federal_holiday"
+    },
+    {
+      "date": "2026-04-18",
+      "name": "Good Friday",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-05-26",
+      "name": "Memorial Day",
+      "type": "federal_holiday"
+    }
+  ],
+  
+  "special_schedules": [
+    {
+      "date": "2025-12-20",
+      "name": "Half Day - Winter Break Prep",
+      "type": "early_dismissal",
+      "schedule_override": {
+        "periods": [1, 2, 3],
+        "period_times": {
+          "1": {"start": "08:00", "end": "08:45"},
+          "2": {"start": "08:50", "end": "09:35"},
+          "3": {"start": "09:40", "end": "10:25"}
+        }
+      }
+    }
+  ],
+  
+  "weekend_days": ["saturday", "sunday"],
+  
+  "messages": {
+    "no_school": "No school today!",
+    "holiday_prefix": "Holiday: ",
+    "current_period_prefix": "Current Period: ",
+    "next_period_prefix": "Next Period: ",
+    "school_ended": "School day has ended"
+  }
+}
