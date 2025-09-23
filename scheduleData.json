@@ -16,26 +16,26 @@
       "name": "A Day",
       "periods": [1, 2, 3],
       "period_times": {
-        "homeroom" : {"start": "09:15", "end": "9:30"},
-        "passing_period_1": {"start": "09:30", "end": "9:40"},
+        "homeroom": {"start": "09:15", "end": "09:30"},
+        "passing_period_1": {"start": "09:30", "end": "09:40"},
         "1": {"start": "09:40", "end": "11:00"},
-        "passing_period_2": {"start": "09:30", "end": "9:40"},
+        "passing_period_2": {"start": "11:00", "end": "11:10"},
         "2": {"start": "11:10", "end": "12:30"},
-        "lunch": {"start": "12:30", "end": "01:25"},
-        "3": {"start": "01:25", "end": "02:45"}
+        "lunch": {"start": "12:30", "end": "13:25"},
+        "3": {"start": "13:25", "end": "14:45"}
       }
     },
     "B": {
-     "name": "A Day",
-     "periods": [4, 5, 6],
-     "period_times": {
-        "homeroom" : {"start": "09:15", "end": "9:30"},
-        "passing_period_1": {"start": "09:30", "end": "9:40"},
+      "name": "B Day",
+      "periods": [4, 5, 6],
+      "period_times": {
+        "homeroom": {"start": "09:15", "end": "09:30"},
+        "passing_period_1": {"start": "09:30", "end": "09:40"},
         "4": {"start": "09:40", "end": "11:00"},
-        "passing_period_2": {"start": "09:30", "end": "9:40"},
+        "passing_period_2": {"start": "11:00", "end": "11:10"},
         "5": {"start": "11:10", "end": "12:30"},
-        "lunch": {"start": "12:30", "end": "01:25"},
-        "6": {"start": "01:25", "end": "02:45"}
+        "lunch": {"start": "12:30", "end": "13:25"},
+        "6": {"start": "13:25", "end": "14:45"}
       }
     }
   },
@@ -43,7 +43,7 @@
   "holidays": [
     {
       "date": "2025-09-24",
-      "name": "La Mercé",
+      "name": "La Mercè",
       "type": "federal_holiday"
     },
     {
@@ -115,7 +115,8 @@
       "date": "2026-01-02",
       "name": "Winter Break",
       "type": "school_holiday"
-    },{
+    },
+    {
       "date": "2026-01-05",
       "name": "Winter Break",
       "type": "school_holiday"
@@ -124,7 +125,8 @@
       "date": "2026-01-06",
       "name": "Winter Break",
       "type": "school_holiday"
-    },{
+    },
+    {
       "date": "2026-01-07",
       "name": "Winter Break",
       "type": "school_holiday"
@@ -143,15 +145,18 @@
       "date": "2026-02-24",
       "name": "Ski Week",
       "type": "school_holiday"
-    },{
+    },
+    {
       "date": "2026-02-25",
       "name": "Ski Week",
       "type": "school_holiday"
-    },{
+    },
+    {
       "date": "2026-02-26",
       "name": "Ski Week",
       "type": "school_holiday"
-    },{
+    },
+    {
       "date": "2026-02-27",
       "name": "Ski Week",
       "type": "school_holiday"
