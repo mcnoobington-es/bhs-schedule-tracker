@@ -210,7 +210,28 @@ function updateDisplay(){
             nextPeriod.textContent = `Next: $nextPeriodName (${periodInfo.next.startTime})`;
         }
         else{
-            next
+            nextPeriod.textContent = "School day ends after this period";
         }
+    } else if (periodInfo.next) {
+        // Between periods
+        whatPeriod.textContent = "Between periods";
+        
+        let nextPeriodName = periodInfo.next.name;
+        if (nextPeriodName === 'homeroom') nextPeriodName = 'Homeroom';
+        else if (nextPeriodName.startsWith('passing_period')) nextPeriodName = 'Passing Period';
+        else if (nextPeriodName === 'lunch') nextPeriodName = 'Lunch';
+        else if (!isNaN(nextPeriodName)) nextPeriodName = `Period ${nextPeriodName}`;
+        
+        if (periodInfo.next.minutesUntil) {
+            nextPeriod.textContent = `${nextPeriodName} starts in ${formatMinutes(periodInfo.next.minutesUntil)} (${periodInfo.next.startTime})`;
+        } else {
+            nextPeriod.textContent = `Next: ${nextPeriodName} (${periodInfo.next.startTime})`;
+        }
+    } else {
+        // School day is over
+        whatPeriod.textContent = "School day has ended!";
+        nextPeriod.textContent = "";
     }
 }
+// Start the application when page loads
+document.addEventListener('DOMContentLoaded', loadScheduleData);
