@@ -70,3 +70,147 @@ function isWeekend(date){
     const dayOfWeek = date.getDay();
     return dayOfWeek === 0 || DayOfWeek === 6; // Sunday is 0 and Saturday is 6
 }
+
+// Convert time string (HH:MM) to minutes since midnight
+function TimeToMinutes(timeString){
+    const [hours, minutes] = timeString.split(':').map(Number);
+    return hours * 60 + minutes;
+}
+// Conver minutes since midnight back to time string
+function minutesToTime(minutes){
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2,'0')}`;
+}
+
+// Get current period information
+function getCurrentPeriodInfo(dayType, currentTime){
+    const periods = scheduleData.day_types[dayType].period_times;
+    const currentMinutes = timeToMinutes(currentTime);
+
+    // creat array of all periods with their times
+    const periodArray = [];
+    for(const [period, times] of Object.entries(periods)){
+        periodArray.push({
+            name: period,
+            start: timeToMinutes(times.start),
+            end: timeToMinutes(times.end)
+        });
+    }
+    // Sort by start time
+    periodArray.sort((a,b) => a.start - b.start);
+
+    // Find current period
+    for(let i = 0; i < periodArray.length; i++){
+        const period = periodArray[i];
+        if(currentMinutes >= period.start && currentMinutes < period.end){
+            // Currently in this period
+            const minutesLeft = period.end - currentMinutes;
+            const nextPeriodInfo = i + 1 < periodArray.length ? periodArray[i + 1] : null;
+
+            return {
+                current: {
+                    name: period.name,
+                    endTime: minutesToTime(period.end),
+                    minutesLEft: minutesLeft,
+                },
+                next: nextPeriodInfo ? {
+                    name: nextPeriodInfo.name,
+                    startTime: minutesToTime(nextPeriodInfo.start)
+                } : null
+            };
+        }
+    }
+    // Not currently in a period, find next one
+    for(const period of periodArray){
+        if(currentMinutes < period.start){
+            const minutesUntile = period.start - currentMinutes;
+            return {
+                current: null,
+                next: {
+                    name: period.name,
+                    startTime: minutesToTime(period.start),
+                    minutesUntil: minutesUntil
+                }
+            };
+        }
+    }
+
+    // School day is over
+    return {current: null, next: null};
+}
+
+// Format minutes into readable text
+function formatMinutes(minutes) {
+    if(minutes < 1) return 'less than a minute';
+    if(minutes === 1) return '1 minute';
+    if(minutes < 60) return `${minutes} minutes`
+
+    const hours = Math.floor(minute / 60);
+    const remainingMinutes = minutes % 60;
+    if(remainingMinutes === 0){
+        return hours === 1 ? '1 hour' : `${hours} hours`;
+    }
+    else{
+        return `${hours}h ${remainingMinutes}m`
+    }
+}
+
+// Main function to update the display
+function updateDisplay(){
+    if(!scheduleData) return;
+
+    const now = Date();
+    const currentTime = now.toTimeString().slice(0, 5); // HH:MM format
+
+    // Check if it's weekend
+    if(isWeekend(now)){
+        whatDay.textContent = "Weekend - No schoold today!"
+        whatPeriod.textContent = "Enjoy your weekend!";
+        nextPeriod.textContent = "";
+        return;
+    }
+
+    // Check if it's a holiday
+    const holiday = isHoliday(now, scheduleData);
+    if(holiday){
+        whatDay.textContent = `Holiday: ${holiday.name}`;
+        whatPeriod.textContent = "No school today!";
+        nextPeriod.textContent = "";
+        return;
+    }
+
+    // Calculate day type (A or B)
+    const dayType = calculateDayType(now, scheduleData);
+    whatDay.textContent = `Today is ${dayType} day`;
+
+    // Get current period info
+    const periodInfo = getCurrentPeriodInfo(dayType, currentTime);
+
+    if(periodInfo.current){
+        // Currently in a period
+        const period = periodInfo.current;
+        let periodName = period.name;
+
+        // Format period name nicely
+        if(periodName === 'homeroom') periodName = 'Homeroom';
+        else if(periodName.startsWith('passing_period')) periodName = 'Passing Period';
+        else if(periodName === 'lunch') periodName = 'Lunch';
+        else if(!isNaN(periodName)) periodName = `Period ${periodName}`;
+
+        whatPeriod.textContent = `${periodName} ends at ${period.endTime} (${formatMinutes(period.minutesLeft)})`;
+
+        if(periodInfo.next){
+            let nextPeriodName = periodInfo.next.name;
+            if(nextPeriodName === 'homeroom') nextPeriodName = 'Homeroom';
+            else if(nextPeriodName.startsWith('passing_period')) nextPeriodName = 'Passing Period';
+            else if(nextPeriodName === 'lunch') nextPeriodName = 'Lunch';
+            else if(!isNaN(nextPeriodName)) nextPeriodName = `Period ${nextPeriodName}`;
+
+            nextPeriod.textContent = `Next: $nextPeriodName (${periodInfo.next.startTime})`;
+        }
+        else{
+            next
+        }
+    }
+}
