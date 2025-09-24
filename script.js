@@ -4,115 +4,113 @@ const whatPeriod = document.getElementById("whatPeriod");
 const nextPeriod = document.getElementById("nextPeriod");
 const divider = document.getElementById("divider");
 
-// Global variable to store schedule data yk
-let scheduleDate = null;
+// Global variable to store schedule data
+let scheduleData = null;
 
-// Load teh JSON data when the page loads
-async function loadScheduleData(){
-    try{
+// Load the JSON data when page loads
+async function loadScheduleData() {
+    try {
         const response = await fetch('scheduleData.json');
         scheduleData = await response.json();
         console.log('Schedule data loaded:', scheduleData);
         updateDisplay();
-
+        
         // Update every minute
         setInterval(updateDisplay, 60000);
-    }
-    catch(error){
-        console.error('Error loading schedule data:', error)
+    } catch (error) {
+        console.error('Error loading schedule data:', error);
         whatDay.textContent = 'Error loading schedule';
-        whatPeriod.textContent = '';
-        nextPeriod.textContent = '';
     }
 }
 
 // Calculate if today is A day or B day
-function calculateDayType(date, scheduleData){
-    const startDate = new Date(scheduleData.schedule_config.cycle_start_state);
+function calculateDayType(date, scheduleData) {
+    const startDate = new Date(scheduleData.schedule_config.cycle_start_date);
     const currentDate = new Date(date);
-
-    // Calculate days sicne start (only count weekdays)
+    
+    // Calculate days since start (only count weekdays)
     let dayCount = 0;
-    let tempDate = newDate(startDate);
-
-    while(tempDate <= currentDate){
+    let tempDate = new Date(startDate);
+    
+    while (tempDate <= currentDate) {
         const dayOfWeek = tempDate.getDay();
         // Only count Monday-Friday (1-5)
-        if(dayOfWeek >= 1 && dayofWeek <= 5){
+        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
             // Check if it's not a holiday
             const dateString = tempDate.toISOString().split('T')[0];
-            const isHoliday = scheduleData.holidays.some(holidy => holiday.date === dateString);
-            if(!isHoliday){
+            const isHoliday = scheduleData.holidays.some(holiday => holiday.date === dateString);
+            if (!isHoliday) {
                 dayCount++;
             }
         }
         tempDate.setDate(tempDate.getDate() + 1);
     }
-
+    
     // Determine A or B day based on cycle start
     const isEven = dayCount % 2 === 0;
-    if(scheduleData.schedule_config.first_day_type === 'A'){
+    if (scheduleData.schedule_config.first_day_type === 'A') {
         return isEven ? 'B' : 'A';
-    }
-    else{
+    } else {
         return isEven ? 'A' : 'B';
     }
 }
 
 // Check if today is a holiday
-function isHoliday(date, scheduleData){
+function isHoliday(date, scheduleData) {
     const dateString = date.toISOString().split('T')[0];
     return scheduleData.holidays.find(holiday => holiday.date === dateString);
 }
 
 // Check if today is a weekend
-function isWeekend(date){
+function isWeekend(date) {
     const dayOfWeek = date.getDay();
-    return dayOfWeek === 0 || DayOfWeek === 6; // Sunday is 0 and Saturday is 6
+    return dayOfWeek === 0 || dayOfWeek === 6; // Sunday = 0, Saturday = 6
 }
 
 // Convert time string (HH:MM) to minutes since midnight
-function TimeToMinutes(timeString){
+function timeToMinutes(timeString) {
     const [hours, minutes] = timeString.split(':').map(Number);
     return hours * 60 + minutes;
 }
-// Conver minutes since midnight back to time string
-function minutesToTime(minutes){
+
+// Convert minutes since midnight back to time string
+function minutesToTime(minutes) {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
-    return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2,'0')}`;
+    return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
 }
 
 // Get current period information
-function getCurrentPeriodInfo(dayType, currentTime){
+function getCurrentPeriodInfo(dayType, currentTime) {
     const periods = scheduleData.day_types[dayType].period_times;
     const currentMinutes = timeToMinutes(currentTime);
-
-    // creat array of all periods with their times
+    
+    // Create array of all periods with their times
     const periodArray = [];
-    for(const [period, times] of Object.entries(periods)){
+    for (const [period, times] of Object.entries(periods)) {
         periodArray.push({
             name: period,
             start: timeToMinutes(times.start),
             end: timeToMinutes(times.end)
         });
     }
+    
     // Sort by start time
-    periodArray.sort((a,b) => a.start - b.start);
-
+    periodArray.sort((a, b) => a.start - b.start);
+    
     // Find current period
-    for(let i = 0; i < periodArray.length; i++){
+    for (let i = 0; i < periodArray.length; i++) {
         const period = periodArray[i];
-        if(currentMinutes >= period.start && currentMinutes < period.end){
+        if (currentMinutes >= period.start && currentMinutes < period.end) {
             // Currently in this period
             const minutesLeft = period.end - currentMinutes;
             const nextPeriodInfo = i + 1 < periodArray.length ? periodArray[i + 1] : null;
-
+            
             return {
                 current: {
                     name: period.name,
                     endTime: minutesToTime(period.end),
-                    minutesLEft: minutesLeft,
+                    minutesLeft: minutesLeft
                 },
                 next: nextPeriodInfo ? {
                     name: nextPeriodInfo.name,
@@ -121,10 +119,11 @@ function getCurrentPeriodInfo(dayType, currentTime){
             };
         }
     }
+    
     // Not currently in a period, find next one
-    for(const period of periodArray){
-        if(currentMinutes < period.start){
-            const minutesUntile = period.start - currentMinutes;
+    for (const period of periodArray) {
+        if (currentMinutes < period.start) {
+            const minutesUntil = period.start - currentMinutes;
             return {
                 current: null,
                 next: {
@@ -135,81 +134,82 @@ function getCurrentPeriodInfo(dayType, currentTime){
             };
         }
     }
-
+    
     // School day is over
-    return {current: null, next: null};
+    return { current: null, next: null };
 }
 
 // Format minutes into readable text
 function formatMinutes(minutes) {
-    if(minutes < 1) return 'less than a minute';
-    if(minutes === 1) return '1 minute';
-    if(minutes < 60) return `${minutes} minutes`
-
-    const hours = Math.floor(minute / 60);
+    if (minutes < 1) return 'less than a minute';
+    if (minutes === 1) return '1 minute';
+    if (minutes < 60) return `${minutes} minutes`;
+    
+    const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
-    if(remainingMinutes === 0){
+    if (remainingMinutes === 0) {
         return hours === 1 ? '1 hour' : `${hours} hours`;
-    }
-    else{
-        return `${hours}h ${remainingMinutes}m`
+    } else {
+        return `${hours}h ${remainingMinutes}m`;
     }
 }
 
 // Main function to update the display
-function updateDisplay(){
-    if(!scheduleData) return;
-
-    const now = Date();
-    const currentTime = now.toTimeString().slice(0, 5); // HH:MM format
-
+function updateDisplay() {
+    if (!scheduleData) return;
+    
+    const now = new Date();
+    // Get current time in HH:MM format more safely
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const currentTime = `${hours}:${minutes}`;
+    
     // Check if it's weekend
-    if(isWeekend(now)){
-        whatDay.textContent = "Weekend - No schoold today!"
+    if (isWeekend(now)) {
+        whatDay.textContent = "Weekend - No school today!";
         whatPeriod.textContent = "Enjoy your weekend!";
         nextPeriod.textContent = "";
         return;
     }
-
+    
     // Check if it's a holiday
     const holiday = isHoliday(now, scheduleData);
-    if(holiday){
+    if (holiday) {
         whatDay.textContent = `Holiday: ${holiday.name}`;
         whatPeriod.textContent = "No school today!";
         nextPeriod.textContent = "";
         return;
     }
-
+    
     // Calculate day type (A or B)
     const dayType = calculateDayType(now, scheduleData);
     whatDay.textContent = `Today is ${dayType} day`;
-
+    
     // Get current period info
     const periodInfo = getCurrentPeriodInfo(dayType, currentTime);
-
-    if(periodInfo.current){
+    
+    if (periodInfo.current) {
         // Currently in a period
         const period = periodInfo.current;
         let periodName = period.name;
-
+        
         // Format period name nicely
-        if(periodName === 'homeroom') periodName = 'Homeroom';
-        else if(periodName.startsWith('passing_period')) periodName = 'Passing Period';
-        else if(periodName === 'lunch') periodName = 'Lunch';
-        else if(!isNaN(periodName)) periodName = `Period ${periodName}`;
-
+        if (periodName === 'homeroom') periodName = 'Homeroom';
+        else if (periodName.startsWith('passing_period')) periodName = 'Passing Period';
+        else if (periodName === 'lunch') periodName = 'Lunch';
+        else if (!isNaN(periodName)) periodName = `Period ${periodName}`;
+        
         whatPeriod.textContent = `${periodName} ends at ${period.endTime} (${formatMinutes(period.minutesLeft)})`;
-
-        if(periodInfo.next){
+        
+        if (periodInfo.next) {
             let nextPeriodName = periodInfo.next.name;
-            if(nextPeriodName === 'homeroom') nextPeriodName = 'Homeroom';
-            else if(nextPeriodName.startsWith('passing_period')) nextPeriodName = 'Passing Period';
-            else if(nextPeriodName === 'lunch') nextPeriodName = 'Lunch';
-            else if(!isNaN(nextPeriodName)) nextPeriodName = `Period ${nextPeriodName}`;
-
-            nextPeriod.textContent = `Next: $nextPeriodName (${periodInfo.next.startTime})`;
-        }
-        else{
+            if (nextPeriodName === 'homeroom') nextPeriodName = 'Homeroom';
+            else if (nextPeriodName.startsWith('passing_period')) nextPeriodName = 'Passing Period';
+            else if (nextPeriodName === 'lunch') nextPeriodName = 'Lunch';
+            else if (!isNaN(nextPeriodName)) nextPeriodName = `Period ${nextPeriodName}`;
+            
+            nextPeriod.textContent = `Next: ${nextPeriodName} (${periodInfo.next.startTime})`;
+        } else {
             nextPeriod.textContent = "School day ends after this period";
         }
     } else if (periodInfo.next) {
@@ -233,5 +233,6 @@ function updateDisplay(){
         nextPeriod.textContent = "";
     }
 }
+
 // Start the application when page loads
 document.addEventListener('DOMContentLoaded', loadScheduleData);
