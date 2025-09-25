@@ -97,3 +97,9 @@ a{
 #centerdivlineabout{
     border: solid 2px black;
 }
+#contactBtn{
+    transition: font-size 0.5s ease;
+}
+#contactBtn:hover{
+    font-size: 1.4rem;
+}

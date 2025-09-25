@@ -154,6 +154,45 @@ function formatMinutes(minutes) {
     }
 }
 
+// Get next school day info
+function getNextSchoolDayInfo() {
+    let nextDay = new Date();
+    nextDay.setDate(nextDay.getDate() + 1); // Start with tomorrow
+    
+    // Keep looking until we find a school day (max 14 days to avoid infinite loop)
+    for (let i = 0; i < 14; i++) {
+        // Skip weekends
+        if (!isWeekend(nextDay)) {
+            // Check if it's not a holiday
+            const holiday = isHoliday(nextDay, scheduleData);
+            if (!holiday) {
+                // This is a school day!
+                const dayType = calculateDayType(nextDay, scheduleData);
+                const dayName = getDayName(nextDay);
+                const isToday = i === 0; // tomorrow is index 0
+                
+                return {
+                    date: nextDay,
+                    dayType: dayType,
+                    dayName: dayName,
+                    isToday: isToday,
+                    daysAway: i + 1
+                };
+            }
+        }
+        // Move to next day
+        nextDay.setDate(nextDay.getDate() + 1);
+    }
+    
+    return null; // Couldn't find a school day (shouldn't happen normally)
+}
+
+// Get day name (Monday, Tuesday, etc.)
+function getDayName(date) {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return days[date.getDay()];
+}
+
 // Main function to update the display
 function updateDisplay() {
     if (!scheduleData) return;
@@ -166,24 +205,53 @@ function updateDisplay() {
     
     // Check if it's weekend
     if (isWeekend(now)) {
+        document.body.style.backgroundColor = "#ede9d0"
         whatDay.textContent = "Weekend - No school today!";
         whatPeriod.textContent = "Enjoy your weekend!";
-        nextPeriod.textContent = "";
+        
+        // Show next school day
+        const nextSchoolDay = getNextSchoolDayInfo();
+        if (nextSchoolDay) {
+            if (nextSchoolDay.daysAway === 1) {
+                nextPeriod.textContent = `Tomorrow (${nextSchoolDay.dayName}) is ${nextSchoolDay.dayType} day`;
+            } else {
+                nextPeriod.textContent = `Next school day: ${nextSchoolDay.dayName} is ${nextSchoolDay.dayType} day`;
+            }
+        } else {
+            nextPeriod.textContent = "";
+        }
         return;
     }
     
     // Check if it's a holiday
     const holiday = isHoliday(now, scheduleData);
     if (holiday) {
+        document.body.style.backgroundColor = "#ede9d0"
         whatDay.textContent = `Holiday: ${holiday.name}`;
         whatPeriod.textContent = "No school today!";
-        nextPeriod.textContent = "";
+        
+        // Show next school day
+        const nextSchoolDay = getNextSchoolDayInfo();
+        if (nextSchoolDay) {
+            if (nextSchoolDay.daysAway === 1) {
+                nextPeriod.textContent = `Tomorrow (${nextSchoolDay.dayName}) is ${nextSchoolDay.dayType} day`;
+            } else {
+                nextPeriod.textContent = `Next school day: ${nextSchoolDay.dayName} is ${nextSchoolDay.dayType} day`;
+            }
+        } else {
+            nextPeriod.textContent = "";
+        }
         return;
     }
     
     // Calculate day type (A or B)
     const dayType = calculateDayType(now, scheduleData);
     whatDay.textContent = `Today is ${dayType} day`;
+    if (dayType === "A") {
+        document.body.style.backgroundColor = "#eb1d25 "
+    } else if (dayType === "B") {
+        document.body.style.backgroundColor = "#bffcf9"
+    }
     
     // Get current period info
     const periodInfo = getCurrentPeriodInfo(dayType, currentTime);
@@ -228,9 +296,20 @@ function updateDisplay() {
             nextPeriod.textContent = `Next: ${nextPeriodName} (${periodInfo.next.startTime})`;
         }
     } else {
-        // School day is over
+        // School day is over - show tomorrow's schedule
+        document.body.style.backgroundColor = "#ede9d0"
         whatPeriod.textContent = "School day has ended!";
-        nextPeriod.textContent = "";
+        
+        const nextSchoolDay = getNextSchoolDayInfo();
+        if (nextSchoolDay) {
+            if (nextSchoolDay.daysAway === 1) {
+                nextPeriod.textContent = `Tomorrow (${nextSchoolDay.dayName}) is ${nextSchoolDay.dayType} day`;
+            } else {
+                nextPeriod.textContent = `Next school day: ${nextSchoolDay.dayName} is ${nextSchoolDay.dayType} day`;
+            }
+        } else {
+            nextPeriod.textContent = "";
+        }
     }
 }
 
