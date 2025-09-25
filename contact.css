@@ -77,3 +77,9 @@ body{
     border-top: 2px solid white;
     margin: 20px auto;
 }
+#contactBtn{
+    transition: font-size 0.5s ease;
+}
+#contactBtn:hover{
+    font-size: 1.4rem;
+}
