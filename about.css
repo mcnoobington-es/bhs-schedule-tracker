@@ -78,11 +78,12 @@ a{
     height: 200px;
     object-fit: cover;
     border: solid 3px black;
+    cursor: pointer;
 }
 #centerthanks{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 5px;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
