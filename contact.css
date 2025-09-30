@@ -90,7 +90,8 @@ body{
         margin-left: 10px;
         width: 200px;
         max-width: 30vw;
-        height: 90px;
+        height: auto;
+        min-height: 70px;
         cursor: pointer;
     }
     #bodybodycontact{
