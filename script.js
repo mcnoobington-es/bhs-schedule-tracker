@@ -246,7 +246,7 @@ function updateDisplay() {
     
     // Calculate day type (A or B)
     const dayType = calculateDayType(now, scheduleData);
-    whatDay.textContent = `Today is ${dayType} day`;
+    whatDay.textContent = `${dayType} day`;
     if (dayType === "A") {
         document.body.style.backgroundColor = "#eb1d25"
     } else if (dayType === "B") {
