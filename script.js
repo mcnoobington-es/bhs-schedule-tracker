@@ -238,7 +238,7 @@ function updateDisplay() {
     // Check if it's weekend
     if (isWeekend(now)) {
         document.body.style.backgroundColor = "#ede9d0"
-        whatDay.textContent = "Weekend - No school today!";
+        whatDay.textContent = "No school today!";
         whatPeriod.textContent = "Enjoy your weekend!";
         
         // Show next school day
