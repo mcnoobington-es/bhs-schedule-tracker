@@ -120,9 +120,10 @@ a{
         cursor: pointer;
     }
     #whatDay{
-        font-size: 7.3rem;
+        font-size: 7rem;
         margin-top: 13vh;
         font-weight: bold;
+        word-wrap: break-word;
     }
      /* Show hamburger menu on mobile */
     #hamburger {
