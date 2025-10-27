@@ -163,3 +163,8 @@ a{
         font-size: 1.2rem;
     }
 }
+@media screen and (max-width: 480px) {
+    #whatDay{
+        font-size: 5.5rem;
+    }
+}
