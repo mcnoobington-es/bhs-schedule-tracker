@@ -93,6 +93,12 @@ function isHoliday(date, scheduleData) {
     return scheduleData.holidays.find(holiday => holiday.date === dateString);
 }
 
+// Check if today is special schedule
+function getSpecialSchedule(date, scheduleData){
+    const dateString = date.toISOString().split("T")[0]
+    return scheduleData.special_schedules.find(schedule => schedule.date === dateString);
+}
+
 // Check if today is a weekend
 function isWeekend(date) {
     const dayOfWeek = date.getDay();
@@ -113,8 +119,8 @@ function minutesToTime(minutes) {
 }
 
 // Get current period information
-function getCurrentPeriodInfo(dayType, currentTime) {
-    const periods = scheduleData.day_types[dayType].period_times;
+function getCurrentPeriodInfo(dayType, currentTime, specialSchedule = null) {
+    const periods = specialSchedule ? specialSchedule.schedule_override.period_times : scheduleData.day_types[dayType].period_times;
     const currentMinutes = timeToMinutes(currentTime);
     
     // Create array of all periods with their times
@@ -276,17 +282,27 @@ function updateDisplay() {
         return;
     }
     
+    // Check for special schedule
+    const specialSchedule = getSpecialSchedule(now, scheduleData);
+    
     // Calculate day type (A or B)
     const dayType = calculateDayType(now, scheduleData);
-    whatDay.textContent = `${dayType} day`;
-    if (dayType === "A") {
-        document.body.style.backgroundColor = "#eb1d25"
-    } else if (dayType === "B") {
-        document.body.style.backgroundColor = "#bffcf9"
+    
+    // Show special schedule notice if applicable
+    if (specialSchedule) {
+        whatDay.textContent = `${dayType} day - ${specialSchedule.name}`;
+        document.body.style.backgroundColor = "#ffa500"; // Orange for special days
+    } else {
+        whatDay.textContent = `${dayType} day`;
+        if (dayType === "A") {
+            document.body.style.backgroundColor = "#eb1d25"
+        } else if (dayType === "B") {
+            document.body.style.backgroundColor = "#bffcf9"
+        }
     }
     
-    // Get current period info
-    const periodInfo = getCurrentPeriodInfo(dayType, currentTime);
+    // Get current period info (pass special schedule if it exists)
+    const periodInfo = getCurrentPeriodInfo(dayType, currentTime, specialSchedule);
     
     if (periodInfo.current) {
         // Currently in a period
@@ -297,6 +313,7 @@ function updateDisplay() {
         if (periodName === 'homeroom') periodName = 'Homeroom';
         else if (periodName.startsWith('passing_period')) periodName = 'Passing Period';
         else if (periodName === 'lunch') periodName = 'Lunch';
+        else if (periodName === 'party') periodName = 'Halloween Party'; // Special case for Halloween
         else if (!isNaN(periodName)) periodName = `Period ${periodName}`;
         
         whatPeriod.textContent = `${periodName} ends at ${period.endTime} (${formatMinutes(period.minutesLeft)})`;
@@ -306,6 +323,7 @@ function updateDisplay() {
             if (nextPeriodName === 'homeroom') nextPeriodName = 'Homeroom';
             else if (nextPeriodName.startsWith('passing_period')) nextPeriodName = 'Passing Period';
             else if (nextPeriodName === 'lunch') nextPeriodName = 'Lunch';
+            else if (nextPeriodName === 'party') nextPeriodName = 'Halloween Party';
             else if (!isNaN(nextPeriodName)) nextPeriodName = `Period ${nextPeriodName}`;
             
             nextPeriod.textContent = `Next: ${nextPeriodName} (${periodInfo.next.startTime})`;
@@ -320,6 +338,7 @@ function updateDisplay() {
         if (nextPeriodName === 'homeroom') nextPeriodName = 'Homeroom';
         else if (nextPeriodName.startsWith('passing_period')) nextPeriodName = 'Passing Period';
         else if (nextPeriodName === 'lunch') nextPeriodName = 'Lunch';
+        else if (nextPeriodName === 'party') nextPeriodName = 'Halloween Party';
         else if (!isNaN(nextPeriodName)) nextPeriodName = `Period ${nextPeriodName}`;
         
         if (periodInfo.next.minutesUntil) {
