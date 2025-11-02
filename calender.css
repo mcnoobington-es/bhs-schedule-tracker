@@ -156,7 +156,7 @@ a{
     }
     
     /* Style menu items for mobile */
-    #homeBtn, #aboutBtn, #contactBtn {
+    #homeBtn, #aboutBtn, #contactBtn, #calenderBtn{
         width: 100%;
         padding: 15px 20px;
         margin: 0;
@@ -164,7 +164,7 @@ a{
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    #homeBtn:hover, #aboutBtn:hover, #contactBtn:hover {
+    #homeBtn:hover, #aboutBtn:hover, #contactBtn:hover, #calenderBtn:hover {
         background-color: rgba(255, 255, 255, 0.1);
         font-size: 1.2rem;
     }
