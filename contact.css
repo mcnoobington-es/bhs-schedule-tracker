@@ -74,9 +74,19 @@ body{
     border-radius: 10px;
 }
 #contactBtn{
+    margin: 15px; 
+    cursor: pointer;
     transition: font-size 0.5s ease;
 }
 #contactBtn:hover{
+    font-size: 1.4rem;
+}
+#calenderBtn{
+    margin: 15px; 
+    cursor: pointer;
+    transition: font-size 0.5s ease;
+}
+#calenderBtn:hover{
     font-size: 1.4rem;
 }
 #bhslogocontact{
