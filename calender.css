@@ -13,6 +13,14 @@ a{
     font-family: Arial, Helvetica, sans-serif;
     background-color: hsl(0, 0%, 25%);
 }
+#divider{
+    background-color: black;
+    width: 10vw;
+    height: 5px;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+}
 #title{
     margin: 5px;
     margin-left: 15px;
@@ -45,59 +53,6 @@ a{
 #aboutBtn:hover{
     font-size: 1.4rem;
 }
-#outerabout{
-    display: flex;
-}
-.innerabout{
-    flex: 1; 
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-}
-.headernameabout {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    width: 100%;
-    display: block;
-}
-.lineabout{
-    border: solid 2px black;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-bottom: 20px;
-}
-.profilepicabout{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border: solid 3px black;
-    cursor: pointer;
-}
-#centerthanks{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
-    padding: 5px;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.glazingabout{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.2rem;
-    text-align: center;
-    width: 100%;
-    display: block;
-}
-#centerdivlineabout{
-    border: solid 2px black;
-}
 #contactBtn{
     margin: 15px; 
     cursor: pointer;
@@ -125,7 +80,6 @@ a{
     margin-right: 20px;
     margin-left: auto;
 }
-
 #hamburger span {
     width: 25px;
     height: 3px;
@@ -147,11 +101,22 @@ a{
 #hamburger.active span:nth-child(3) {
     transform: rotate(45deg) translate(-6px, -6px);
 }
+#image_display{
+    display: block;
+    max-width: 90vw;
+    margin: auto;
+}
+#month_wrapper{
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+#month_select{
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
 @media screen and (max-width:768px) {
-    body{
-        display: flex;
-        flex-direction: column;
-    }
     #title{
         margin: 3px;
         margin-left: 10px;
@@ -160,24 +125,13 @@ a{
         height: auto;
         cursor: pointer;
     }
-    #bodybodycontact{
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 2rem;
+    #whatDay{
+        font-size: 7rem;
+        margin-top: 13vh;
         font-weight: bold;
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        padding-left: 20px;
-        padding-right: 20px;
+        word-wrap: break-word;
     }
-    #centerdivlineabout{
-        border: none;
-    }
-    #outerabout{
-        display: flex;
-        flex-direction: column;
-    }
-    /* Show hamburger menu on mobile */
+     /* Show hamburger menu on mobile */
     #hamburger {
         display: flex;
     }
@@ -214,4 +168,7 @@ a{
         background-color: rgba(255, 255, 255, 0.1);
         font-size: 1.2rem;
     }
+}
+@media screen and (max-width: 480px) {
+    
 }
