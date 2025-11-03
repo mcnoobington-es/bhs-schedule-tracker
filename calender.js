@@ -2,6 +2,31 @@ const image = document.getElementById("image_display")
 const selection = document.getElementById("month_select")
 const hamburger = document.getElementById('hamburger');
 const wrapper = document.getElementById('wrapper');
+let currentMonth = new Date().getMonth();
+let month
+
+if (currentMonth == 0) {
+    month = "january"
+} else if (currentMonth == 1) {
+    month = "february"
+} else if (currentMonth == 2) {
+    month = "march"
+} else if (currentMonth == 3) {
+    month = "april"
+} else if (currentMonth == 4) {
+    month = "may"
+} else if (currentMonth == 5) {
+    month = "june"
+} else if (currentMonth == 8) {
+    month = "september"
+} else if (currentMonth == 9) {
+    month = "october"
+} else if (currentMonth == 10) {
+    month = "november"
+} else if (currentMonth == 11) {
+    month = "december"
+} 
+image.src = `schedule/${month}.png`
 
 if (hamburger) {
     hamburger.addEventListener('click', function() {
@@ -55,7 +80,7 @@ function updateImage() {
     } else if (selection.value == "june"){
         image.src = "schedule/june.png"
     } else{
-        image.src = "schedule/november.png"
+        image.src = `schedule/${month}.png`
     }
 }
 
