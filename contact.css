@@ -2,7 +2,7 @@ body{
     margin: 0;
     background-color: #ede9d0;
 }
-.navbarbutton{
+a{
     color: inherit;
     text-decoration: none;
 }
@@ -29,20 +29,12 @@ body{
     color: white;
     font-size: 1.2rem;
 }
-#homeBtn{
+.navButton{
     margin: 15px; 
     cursor: pointer;
     transition: font-size 0.5s ease;
 }
-#homeBtn:hover{
-    font-size: 1.4rem;
-}
-#aboutBtn{
-    margin: 15px; 
-    cursor: pointer;
-    transition: font-size 0.5s ease;
-}
-#aboutBtn:hover{
+.navButton:hover{
     font-size: 1.4rem;
 }
 #bodybodycontact{
@@ -72,22 +64,6 @@ body{
     border-width: 3px;
     border-style: solid;
     border-radius: 10px;
-}
-#contactBtn{
-    margin: 15px; 
-    cursor: pointer;
-    transition: font-size 0.5s ease;
-}
-#contactBtn:hover{
-    font-size: 1.4rem;
-}
-#calenderBtn{
-    margin: 15px; 
-    cursor: pointer;
-    transition: font-size 0.5s ease;
-}
-#calenderBtn:hover{
-    font-size: 1.4rem;
 }
 #bhslogocontact{
     width: 500px;
