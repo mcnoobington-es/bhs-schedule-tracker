@@ -37,36 +37,12 @@ a{
     color: white;
     font-size: 1.2rem;
 }
-#homeBtn{
+.navButton{
     margin: 15px; 
     cursor: pointer;
     transition: font-size 0.5s ease;
 }
-#homeBtn:hover{
-    font-size: 1.4rem;
-}
-#aboutBtn{
-    margin: 15px; 
-    cursor: pointer;
-    transition: font-size 0.5s ease;
-}
-#aboutBtn:hover{
-    font-size: 1.4rem;
-}
-#contactBtn{
-    margin: 15px; 
-    cursor: pointer;
-    transition: font-size 0.5s ease;
-}
-#contactBtn:hover{
-    font-size: 1.4rem;
-}
-#calenderBtn{
-    margin: 15px; 
-    cursor: pointer;
-    transition: font-size 0.5s ease;
-}
-#calenderBtn:hover{
+.navButton:hover{
     font-size: 1.4rem;
 }
 /* Hamburger menu - hidden by default on desktop */
