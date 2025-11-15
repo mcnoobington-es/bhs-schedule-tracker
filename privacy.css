@@ -1,0 +1,220 @@
+body{
+    margin: 0;
+    background-color: #ede9d0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+#navbar{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: hsl(0, 0%, 25%);
+}
+#title{
+    margin: 5px;
+    margin-left: 15px;
+    width: 200px;
+    height: 90px;
+    cursor: pointer;
+    transition: width 0.5s ease;
+}
+#wrapper{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 30px;
+    color: white;
+    font-size: 1.2rem;
+}
+#homeBtn{
+    margin: 15px; 
+    cursor: pointer;
+    transition: font-size 0.5s ease;
+}
+#homeBtn:hover{
+    font-size: 1.4rem;
+}
+#aboutBtn{
+    margin: 15px; 
+    cursor: pointer;
+    transition: font-size 0.5s ease;
+}
+#aboutBtn:hover{
+    font-size: 1.4rem;
+}
+#contactBtn{
+    margin: 15px; 
+    cursor: pointer;
+    transition: font-size 0.5s ease;
+}
+#contactBtn:hover{
+    font-size: 1.4rem;
+}
+#calenderBtn{
+    margin: 15px; 
+    cursor: pointer;
+    transition: font-size 0.5s ease;
+}
+#calenderBtn:hover{
+    font-size: 1.4rem;
+}
+
+#privacy-content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px 40px 20px;
+    color: #333;
+}
+
+#privacy-content h1 {
+    color: #56423e;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.last-updated {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+#privacy-content section {
+    margin-bottom: 30px;
+}
+
+#privacy-content h2 {
+    color: #56423e;
+    font-size: 1.8rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #56423e;
+    padding-bottom: 5px;
+}
+
+#privacy-content h3 {
+    color: #56423e;
+    font-size: 1.3rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#privacy-content p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+#privacy-content ul {
+    line-height: 1.8;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+#privacy-content li {
+    margin-bottom: 8px;
+}
+
+/* Hamburger menu - hidden by default on desktop */
+#hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 20px;
+    margin-left: auto;
+}
+
+#hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+/* Hamburger animation when open */
+#hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-7px, 6px);
+}
+
+#hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+#hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-6px, -6px);
+}
+
+@media screen and (max-width:768px) {
+    #title{
+        margin: 3px;
+        margin-left: 10px;
+        width: 200px;
+        max-width: 40vw;
+        height: auto;
+        cursor: pointer;
+    }
+    
+    #privacy-content {
+        margin: 20px auto;
+        padding: 0 15px 20px 15px;
+    }
+    
+    #privacy-content h1 {
+        font-size: 2rem;
+    }
+    
+    #privacy-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    #privacy-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    /* Show hamburger menu on mobile */
+    #hamburger {
+        display: flex;
+    }
+    
+    /* Hide the navigation by default on mobile */
+    #wrapper {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: hsl(0, 0%, 25%);
+        flex-direction: column;
+        width: 200px;
+        box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 5px 0 0 5px;
+        display: none;
+        z-index: 1000;
+    }
+    
+    /* Show wrapper when active */
+    #wrapper.active {
+        display: flex;
+    }
+    
+    /* Style menu items for mobile */
+    #homeBtn, #aboutBtn, #contactBtn, #calenderBtn {
+        width: 100%;
+        padding: 15px 20px;
+        margin: 0;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #homeBtn:hover, #aboutBtn:hover, #contactBtn:hover, #calenderBtn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        font-size: 1.2rem;
+    }
+}
