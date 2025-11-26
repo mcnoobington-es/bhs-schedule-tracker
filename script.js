@@ -313,7 +313,8 @@ function updateDisplay() {
         if (periodName === 'homeroom') periodName = 'Homeroom';
         else if (periodName.startsWith('passing_period')) periodName = 'Passing Period';
         else if (periodName === 'lunch') periodName = 'Lunch';
-        else if (periodName === 'party') periodName = 'Halloween Party'; // Special case for Halloween
+        else if (periodName === 'party') periodName = 'Party'; // Special case for Halloween party
+        else if (periodName === 'concert') periodName = 'Concert'; // Special case for Concert
         else if (!isNaN(periodName)) periodName = `Period ${periodName}`;
         
         whatPeriod.textContent = `${periodName} ends at ${period.endTime} (${formatMinutes(period.minutesLeft)})`;
