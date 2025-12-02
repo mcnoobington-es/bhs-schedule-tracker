@@ -251,12 +251,13 @@
         "periods": [4, 5, 6],
         "period_times": {
           "homeroom": {"start": "09:15", "end": "09:30"},
-          "passing_period_1": {"start": "09:30", "end": "09:40"},
-          "4": {"start": "09:40", "end": "10:50"},
+          "passing_period_1": {"start": "09:30", "end": "09:35"},
+          "4": {"start": "09:35", "end": "10:45"},
+          "passing_period_2": {"start": "10:45", "end": "10:50"},
           "5": {"start": "10:50", "end": "12:00"},
-          "lunch": {"start": "12:00", "end": "12:45"},
-          "6": {"start": "12:45", "end": "13:55"},
-          "concert": {"start": "14:00", "end": "14:45"}
+          "lunch": {"start": "12:00", "end": "12:35"},
+          "6": {"start": "12:35", "end": "13:45"},
+          "concert": {"start": "13:45", "end": "14:45"}
         }
       }
     }
