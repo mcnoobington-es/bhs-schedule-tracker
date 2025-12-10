@@ -315,6 +315,7 @@ function updateDisplay() {
         else if (periodName === 'lunch') periodName = 'Lunch';
         else if (periodName === 'party') periodName = 'Party'; // Special case for Halloween party
         else if (periodName === 'concert') periodName = 'Concert'; // Special case for Concert
+        else if (periodName === 'market') periodName = 'Christmas Market'; // Special case for christmas market
         else if (!isNaN(periodName)) periodName = `Period ${periodName}`;
         
         whatPeriod.textContent = `${periodName} ends at ${period.endTime} (${formatMinutes(period.minutesLeft)})`;

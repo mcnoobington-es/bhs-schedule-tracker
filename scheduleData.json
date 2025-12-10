@@ -258,7 +258,7 @@
           "passing_period_3": {"start": "11:10", "end": "11:20"},
           "3": {"start": "11:20", "end": "12:00"},
           "lunch": {"start": "12:00", "end": "12:30"},
-          "christmas market": {"start": "12:30", "end": "14:45"}
+          "market": {"start": "12:30", "end": "14:45"}
         }
       }
     },
