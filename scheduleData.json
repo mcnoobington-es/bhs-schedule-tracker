@@ -186,7 +186,7 @@
   "special_schedules": [
     {
       "date": "2025-12-19",
-      "name": "Half Day - Winter Break Prep",
+      "name": "Half Day",
       "type": "early_dismissal",
       "schedule_override": {
         "periods": [1, 2, 3, 4, 5, 6],
