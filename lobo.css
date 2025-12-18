@@ -1,6 +1,7 @@
 body{
     margin: 0;
-    background-color: #ede9d0;
+    background-color: black
+    ;
 }
 a{
     color: inherit;
@@ -71,6 +72,14 @@ a{
     transform: rotate(45deg) translate(-6px, -6px);
 }
 @media screen and (max-width:768px) {
+    #title{
+        margin: 3px;
+        margin-left: 10px;
+        width: 200px;
+        max-width: 40vw;
+        height: auto;
+        cursor: pointer;
+    }
     /* Show hamburger menu on mobile */
     #hamburger {
         display: flex;
