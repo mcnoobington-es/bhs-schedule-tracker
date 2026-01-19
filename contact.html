@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles.css" rel="stylesheet">
+        <title>Contact - Student Hub</title>
+    </head>
+    <body>
+        <div id="navbar">
+            <a href="/studenthub/index.html" class="navbuttons">Home</a>
+            <div id="navgrouper">
+                <a href='/studenthub/sites.html' class="navbuttons">Sites</a>
+                <a href='/studenthub/conduct.html' class="navbuttons">Code of Conduct</a>
+                <a href='/studenthub/contact.html' class="navbuttons">Contact BHS</a>
+                <a href='/studenthub/about.html' class="navbuttons">Privacy/About</a>
+            </div>
+        </div>
+        <br><br>
+        <p class="bodydescriptor">If you have any questions, suggestions, or feedback, please reach out — we’ll get back to you as soon as we can.</p>
+        <main class="maincontact">
+            <section class="contactgrid">
+                <article class="contactcard">
+                    <h3 class="cardtitle">Developers</h3>
+                    <p class="cardtext">Bug reports, feature requests, and website issues go here. We monitor messages and respond when possible.</p>
+                    <a href="mailto:msmith7297@gmail.com,isaacdavidm0516@gmail.com" class="buttonpage">Email</a>
+                    <a href="https://wa.me/607480543" class="buttonpage">WhatsApp</a>
+                </article>
+                <article class="contactcard">
+                    <h3 class="cardtitle">Student Council</h3>
+                    <p class="cardtext">For student-related concerns, events, or council issues. Student council can help address student-specific questions.</p>
+                    <a href="construction.html" class="buttonpage">Email Student Council</a>
+                </article>
+                <article class="contactcard">
+                    <h3 class="cardtitle">Administration</h3>
+                    <p class="cardtext">For scheduling, policy, or person-specific questions, check the admin guide to contact an administrator.</p>
+                    <a href="staff.html" class="buttonpage">Open Admin Guide</a>
+                </article>
+            </section>
+            <aside class="contact-aside">
+                <section class="contact-form">
+                    <h3 class="titleadmin">Send a message (Opens your email)</h3>
+                    <form id="emailForm" action="#">
+                        <input type="text" id="name" placeholder="Your name" required>
+                        <input type="email" id="email" placeholder="Your email" required>
+                        <input type="text" id="subject" placeholder="Subject" required>
+                        <textarea id="message" rows="5" placeholder="Write your message" required></textarea>
+                        <div class="form-actions">
+                            <button type="submit" class="buttonpage">Compose Email</button>
+                        </div>
+                    </form>
+                    <p class="smalltext">This form composes an email in your mail client; messages are not stored on the site.</p>
+                </section>
+            </aside>
+        </main>
+        <script src="contact-form.js"></script>
+    </body>
+</html>
