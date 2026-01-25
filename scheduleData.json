@@ -132,6 +132,16 @@
       "type": "school_holiday"
     },
     {
+      "date": "2026-01-29",
+      "name": "Makeup Exams",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-01-30",
+      "name": "Makeup Exams",
+      "type": "school_holiday"
+    },
+    {
       "date": "2026-02-09",
       "name": "No School",
       "type": "school_holiday"
@@ -277,6 +287,45 @@
           "lunch": {"start": "12:00", "end": "12:35"},
           "6": {"start": "12:35", "end": "13:45"},
           "concert": {"start": "13:45", "end": "14:45"}
+        }
+      }
+    },
+    {
+      "date": "2026-01-26",
+      "name": "Exam Week",
+      "type": "exam_schedule",
+      "schedule_override": {
+        "periods": [1, 2],
+        "period_times": {
+          "1": {"start": "09:30", "end": "11:30"},
+          "lunch": {"start": "11:30", "end": "12:30"},
+          "2": {"start": "12:30", "end": "14:30"}
+        }
+      }
+    },
+    {
+      "date": "2026-01-27",
+      "name": "Exam Week",
+      "type": "exam_schedule",
+      "schedule_override": {
+        "periods": [3, 4],
+        "period_times": {
+          "3": {"start": "09:30", "end": "11:30"},
+          "lunch": {"start": "11:30", "end": "12:30"},
+          "4": {"start": "12:30", "end": "14:30"}
+        }
+      }
+    },
+    {
+      "date": "2026-01-28",
+      "name": "Exam Week",
+      "type": "exam_schedule",
+      "schedule_override": {
+        "periods": [5, 6],
+        "period_times": {
+          "5": {"start": "09:30", "end": "11:30"},
+          "lunch": {"start": "11:30", "end": "12:30"},
+          "6": {"start": "12:30", "end": "14:30"}
         }
       }
     }
