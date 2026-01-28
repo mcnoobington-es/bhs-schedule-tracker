@@ -290,7 +290,7 @@ function updateDisplay() {
     
     // Show special schedule notice if applicable
     if (specialSchedule) {
-        whatDay.textContent = `${dayType} day - ${specialSchedule.name}`;
+        whatDay.textContent = `${specialSchedule.name}`;
         document.body.style.backgroundColor = "#ffa500"; // Orange for special days
     } else {
         whatDay.textContent = `${dayType} day`;
@@ -316,6 +316,7 @@ function updateDisplay() {
         else if (periodName === 'party') periodName = 'Party'; // Special case for Halloween party
         else if (periodName === 'concert') periodName = 'Concert'; // Special case for Concert
         else if (periodName === 'market') periodName = 'Christmas Market'; // Special case for christmas market
+        else if (periodName === 'debrief') periodName = 'Big Group Debrief (7th floor)';
         else if (!isNaN(periodName)) periodName = `Period ${periodName}`;
         
         whatPeriod.textContent = `${periodName} ends at ${period.endTime} (${formatMinutes(period.minutesLeft)})`;
@@ -326,6 +327,7 @@ function updateDisplay() {
             else if (nextPeriodName.startsWith('passing_period')) nextPeriodName = 'Passing Period';
             else if (nextPeriodName === 'lunch') nextPeriodName = 'Lunch';
             else if (nextPeriodName === 'party') nextPeriodName = 'Halloween Party';
+            else if (nextPeriodName === 'debrief') nextPeriodName = 'Big Group Debrief (7th floor)';
             else if (!isNaN(nextPeriodName)) nextPeriodName = `Period ${nextPeriodName}`;
             
             nextPeriod.textContent = `Next: ${nextPeriodName} (${periodInfo.next.startTime})`;

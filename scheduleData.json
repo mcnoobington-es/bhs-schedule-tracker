@@ -7,7 +7,7 @@
   
   "schedule_config": {
     "cycle_start_date": "2026-01-27",
-    "first_day_type": "A",
+    "first_day_type": "B",
     "weekdays_only": true
   },
   
@@ -129,11 +129,6 @@
     {
       "date": "2026-01-07",
       "name": "Winter Break",
-      "type": "school_holiday"
-    },
-    {
-      "date": "2026-01-29",
-      "name": "Makeup Exams",
       "type": "school_holiday"
     },
     {
@@ -326,6 +321,28 @@
           "5": {"start": "09:30", "end": "11:30"},
           "lunch": {"start": "11:30", "end": "12:30"},
           "6": {"start": "12:30", "end": "14:30"}
+        }
+      }
+    },
+    {
+      "date": "2026-01-29",
+      "name": "PROFESSIONAL DEVELOPMENT SESSION",
+      "type": "professional_devlopment",
+      "schedule_override": {
+        "periods": [1, 2, 3, 4, 5],
+        "period_times": {
+          "1": {"start": "09:40", "end": "10:10"},
+          "passing_period_1": {"start": "10:10", "end": "10:20"},
+          "2": {"start": "10:20", "end": "10:50"},
+          "passing_period_2": {"start": "10:50", "end": "11:00"},
+          "3": {"start": "11:00", "end": "11:30"},
+          "passing_period_3": {"start": "11:30", "end": "11:40"},
+          "4": {"start": "11:40", "end": "12:10"},
+          "passing_period_4": {"start": "12:10", "end": "12:20"},
+          "5": {"start": "12:20", "end": "12:50"},
+          "passing_period_5": {"start": "12:50", "end": "13:00"},
+          "lunch": {"start": "13:00", "end": "14:00"},
+          "debrief": {"start": "14:00", "end": "15:30"}
         }
       }
     }
