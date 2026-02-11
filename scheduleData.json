@@ -142,6 +142,11 @@
       "type": "school_holiday"
     },
     {
+      "date": "2026-02-12",
+      "name": "Severe Weather",
+      "type": "school_holiday"
+    },
+    {
       "date": "2026-02-23",
       "name": "Ski Week",
       "type": "school_holiday"
@@ -342,6 +347,91 @@
           "5": {"start": "12:20", "end": "13:00"},
           "lunch": {"start": "13:00", "end": "14:00"},
           "debrief": {"start": "14:00", "end": "15:30"}
+        }
+      }
+    },
+    {
+      "date": "2026-02-16",
+      "name": "Carnival - Prehistory Mode",
+      "type": "school_event",
+      "schedule_override": {
+        "periods": [4, 5, 6],
+        "period_times": {
+          "homeroom": {"start": "09:15", "end": "09:30"},
+          "passing_period_1": {"start": "09:30", "end": "09:40"},
+          "4": {"start": "09:40", "end": "11:00"},
+          "passing_period_2": {"start": "11:00", "end": "11:10"},
+          "5": {"start": "11:10", "end": "12:30"},
+          "lunch": {"start": "12:30", "end": "13:25"},
+          "6": {"start": "13:25", "end": "14:45"}
+        }
+      }
+    },
+    {
+      "date": "2026-02-17",
+      "name": "Carnival - Ancient Civilization",
+      "type": "school_event",
+      "schedule_override": {
+        "periods": [1, 2, 3],
+        "period_times": {
+          "homeroom": {"start": "09:15", "end": "09:30"},
+          "passing_period_1": {"start": "09:30", "end": "09:40"},
+          "1": {"start": "09:40", "end": "11:00"},
+          "passing_period_2": {"start": "11:00", "end": "11:10"},
+          "2": {"start": "11:10", "end": "12:30"},
+          "lunch": {"start": "12:30", "end": "13:25"},
+          "3": {"start": "13:25", "end": "14:45"}
+        }
+      }
+    },
+    {
+      "date": "2026-02-18",
+      "name": "Carnival - Renaissance Remix",
+      "type": "school_event",
+      "schedule_override": {
+        "periods": [4, 5, 6],
+        "period_times": {
+          "homeroom": {"start": "09:15", "end": "09:30"},
+          "passing_period_1": {"start": "09:30", "end": "09:40"},
+          "4": {"start": "09:40", "end": "11:00"},
+          "passing_period_2": {"start": "11:00", "end": "11:10"},
+          "5": {"start": "11:10", "end": "12:30"},
+          "lunch": {"start": "12:30", "end": "13:25"},
+          "6": {"start": "13:25", "end": "14:45"}
+        }
+      }
+    },
+    {
+      "date": "2026-02-19",
+      "name": "Carnival - Retro Rewind",
+      "type": "school_event",
+      "schedule_override": {
+        "periods": [1, 2, 3],
+        "period_times": {
+          "homeroom": {"start": "09:15", "end": "09:30"},
+          "passing_period_1": {"start": "09:30", "end": "09:40"},
+          "1": {"start": "09:40", "end": "11:00"},
+          "passing_period_2": {"start": "11:00", "end": "11:10"},
+          "2": {"start": "11:10", "end": "12:30"},
+          "lunch": {"start": "12:30", "end": "13:25"},
+          "3": {"start": "13:25", "end": "14:45"}
+        }
+      }
+    },
+    {
+      "date": "2026-02-20",
+      "name": "Carnival - Future Takeover",
+      "type": "school_event",
+      "schedule_override": {
+        "periods": [4, 5, 6],
+        "period_times": {
+          "homeroom": {"start": "09:15", "end": "09:30"},
+          "passing_period_1": {"start": "09:30", "end": "09:40"},
+          "4": {"start": "09:40", "end": "11:00"},
+          "passing_period_2": {"start": "11:00", "end": "11:10"},
+          "5": {"start": "11:10", "end": "12:30"},
+          "lunch": {"start": "12:30", "end": "13:25"},
+          "6": {"start": "13:25", "end": "14:45"}
         }
       }
     }
