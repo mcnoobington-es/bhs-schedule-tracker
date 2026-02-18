@@ -385,8 +385,8 @@
       }
     },
     {
-      "date": "(A Day) 2026-02-18",
-      "name": "Carnival - Renaissance Remix",
+      "date": "2026-02-18",
+      "name": "(A Day) Carnival - Renaissance Remix",
       "type": "school_event",
       "schedule_override": {
         "periods": [1, 2, 3],
@@ -402,8 +402,8 @@
       }
     },
     {
-      "date": "(B Day)2026-02-19",
-      "name": "Carnival - Retro Rewind",
+      "date": "2026-02-19",
+      "name": "(B Day) Carnival - Retro Rewind",
       "type": "school_event",
       "schedule_override": {
         "periods": [4, 5, 6],
@@ -419,8 +419,8 @@
       }
     },
     {
-      "date": "(A Day) 2026-02-20",
-      "name": "Carnival - Future Takeover",
+      "date": "2026-02-20",
+      "name": "(A Day) Carnival - Future Takeover",
       "type": "school_event",
       "schedule_override": {
         "periods": [1, 2, 3],
