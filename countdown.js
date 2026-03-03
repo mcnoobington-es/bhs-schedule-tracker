@@ -43,7 +43,7 @@ function updateCountdown() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const endDate = new Date(2026, 6, 17); // July 17, 2026
+    const endDate = new Date(2026, 5, 17); // June 17, 2026
 
     const daysLeft = countSchoolDays(today, endDate);
     document.getElementById('countdown-number').textContent = daysLeft;
