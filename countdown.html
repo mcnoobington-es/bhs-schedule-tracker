@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="lobo.css">
+    <link rel="stylesheet" href="countdown.css">
     <link rel="icon" href="bell_icon.png">
-    <title>BHS Bell - Lobo Magazine</title>
+    <title>BHS Bell - School Countdown</title>
 </head>
 <body>
     <div id="navbar">
         <a href="index.html"><img id="title" src="bhslogo2.png"></a>
-
         <button id="hamburger" aria-label="Menu">
             <span></span>
             <span></span>
@@ -27,14 +26,18 @@
         </div>
     </div>
 
-    <iframe src="lobo/EmpathyIssueTheLoboFinal.pdf" 
-        width="100%" 
-        height="800px"
-        style="border: none;">
-        <p>Your browser doesn't support embedded PDFs. 
-            <a href="lobo/EmpathyIssueTheLoboFinal.pdf">Download the PDF</a>
-        </p>
-    </iframe>
+    <div id="countdown-container">
+        <div id="countdown-label-top">school days remaining</div>
+        <div id="countdown-number">--</div>
+        <div id="countdown-label-bottom">until end of school</div>
+        <div id="end-date-label">June 17, 2026</div>
+        <div id="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+        <div id="progress-label"></div>
+    </div>
 
+    <script src="countdown.js"></script>
     <script src="contact.js"></script>
 </body>
+</html>

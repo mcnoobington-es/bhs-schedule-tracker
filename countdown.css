@@ -1,0 +1,190 @@
+body {
+    margin: 0;
+    background-color: #fff9e6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: hsl(0, 0%, 25%);
+}
+
+#title {
+    margin: 5px;
+    margin-left: 15px;
+    width: 200px;
+    height: 90px;
+    cursor: pointer;
+    transition: width 0.5s ease;
+}
+
+#wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 30px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.navButton {
+    margin: 15px;
+    cursor: pointer;
+    transition: font-size 0.5s ease;
+}
+
+.navButton:hover {
+    font-size: 1.4rem;
+}
+
+#countdown-container {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 15vh;
+    padding: 20px;
+}
+
+#countdown-label-top {
+    font-size: 2rem;
+    color: #555;
+}
+
+#countdown-number {
+    font-size: 10rem;
+    font-weight: bold;
+    color: #222;
+    line-height: 1.1;
+    margin: 10px 0;
+}
+
+#countdown-label-bottom {
+    font-size: 2rem;
+    color: #555;
+}
+
+#end-date-label {
+    font-size: 1.3rem;
+    color: #888;
+    margin-top: 12px;
+}
+
+#progress-container {
+    width: 50%;
+    max-width: 500px;
+    background-color: #ddd;
+    border-radius: 10px;
+    height: 18px;
+    margin: 30px auto 0;
+    overflow: hidden;
+}
+
+#progress-bar {
+    height: 100%;
+    background-color: #f5a623;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+#progress-label {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hamburger menu - hidden by default on desktop */
+#hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 20px;
+    margin-left: auto;
+}
+
+#hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+#hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-7px, 6px);
+}
+
+#hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+#hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-6px, -6px);
+}
+
+@media screen and (max-width: 768px) {
+    #title {
+        margin: 3px;
+        margin-left: 10px;
+        width: 200px;
+        max-width: 40vw;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #hamburger {
+        display: flex;
+    }
+
+    #wrapper {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: hsl(0, 0%, 25%);
+        flex-direction: column;
+        width: 200px;
+        box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 5px 0 0 5px;
+        display: none;
+        z-index: 1000;
+    }
+
+    #wrapper.active {
+        display: flex;
+    }
+
+    #countdown-number {
+        font-size: 7rem;
+    }
+
+    #countdown-label-top,
+    #countdown-label-bottom {
+        font-size: 1.5rem;
+    }
+
+    #progress-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #countdown-number {
+        font-size: 5rem;
+    }
+
+    #countdown-label-top,
+    #countdown-label-bottom {
+        font-size: 1.2rem;
+    }
+}
