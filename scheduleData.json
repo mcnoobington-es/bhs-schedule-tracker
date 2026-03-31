@@ -6,7 +6,7 @@
   },
   
   "schedule_config": {
-    "cycle_start_date": "2026-01-27",
+    "cycle_start_date": "2026-03-27",
     "first_day_type": "B",
     "weekdays_only": true
   },
@@ -179,6 +179,41 @@
     {
       "date": "2026-03-18",
       "name": "Professional Development",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-03-30",
+      "name": "Semana Santa",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-03-31",
+      "name": "Semana Santa",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-04-01",
+      "name": "Semana Santa",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-04-02",
+      "name": "Semana Santa",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-04-03",
+      "name": "Semana Santa",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-04-06",
+      "name": "Semana Santa",
+      "type": "school_holiday"
+    },
+    {
+      "date": "2026-04-07",
+      "name": "Semana Santa",
       "type": "school_holiday"
     },
     {
