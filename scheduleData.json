@@ -7,7 +7,7 @@
   
   "schedule_config": {
     "cycle_start_date": "2026-03-27",
-    "first_day_type": "B",
+    "first_day_type": "A",
     "weekdays_only": true
   },
   
