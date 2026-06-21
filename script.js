@@ -75,7 +75,9 @@ function calculateDayType(date, scheduleData) {
                 dayCount++;
             }
         }
-        tempDate.setDate(tempDate.getDate() + 1);
+        // Add 24 hours to tempDate, adding 1 calendar date is prone
+        // to off by one error at DST boundary
+        tempDate.setTime(tempDate.getTime() + 24 * 60 * 60 * 1000);
     }
     
     // Determine A or B day based on cycle start
