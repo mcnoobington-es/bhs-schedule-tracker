@@ -1,7 +1,7 @@
 {
   "school_info": {
     "name": "Barcelona High School",
-    "academic_year": "2025-2026",
+    "academic_year": "2026-2027",
     "schedule_type": "regular"
   },
 
@@ -152,11 +152,6 @@
       "type": "school_holiday"
     },
     {
-      "date": "2027-02-12",
-      "name": "Severe Weather",
-      "type": "school_holiday"
-    },
-    {
       "date": "2027-02-22",
       "name": "Ski Week",
       "type": "school_holiday"
@@ -186,7 +181,6 @@
       "name": "No School",
       "type": "school_holiday"
     },
-    
     {
       "date": "2027-03-18",
       "name": "Spring Break",
