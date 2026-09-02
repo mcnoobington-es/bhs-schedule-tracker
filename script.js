@@ -55,38 +55,6 @@ async function loadScheduleData() {
     }
 }
 
-// Calculate if today is A day or B day
-function calculateDayType(date, scheduleData) {
-    const startDate = new Date(scheduleData.schedule_config.cycle_start_date);
-    const currentDate = new Date(date);
-    
-    // Calculate days since start (only count weekdays)
-    let dayCount = 0;
-    let tempDate = new Date(startDate);
-    
-    while (tempDate <= currentDate) {
-        const dayOfWeek = tempDate.getDay();
-        // Only count Monday-Friday (1-5)
-        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
-            // Check if it's not a holiday
-            const dateString = tempDate.toISOString().split('T')[0];
-            const isHoliday = scheduleData.holidays.some(holiday => holiday.date === dateString);
-            if (!isHoliday) {
-                dayCount++;
-            }
-        }
-        tempDate.setDate(tempDate.getDate() + 1);
-    }
-    
-    // Determine A or B day based on cycle start
-    const isEven = dayCount % 2 === 0;
-    if (scheduleData.schedule_config.first_day_type === 'A') {
-        return isEven ? 'B' : 'A';
-    } else {
-        return isEven ? 'A' : 'B';
-    }
-}
-
 // Check if today is a holiday
 function isHoliday(date, scheduleData) {
     const dateString = date.toISOString().split('T')[0];
@@ -119,8 +87,8 @@ function minutesToTime(minutes) {
 }
 
 // Get current period information
-function getCurrentPeriodInfo(dayType, currentTime, specialSchedule = null) {
-    const periods = specialSchedule ? specialSchedule.schedule_override.period_times : scheduleData.day_types[dayType].period_times;
+function getCurrentPeriodInfo(currentTime, specialSchedule = null) {
+    const periods = specialSchedule ? specialSchedule.schedule_override.period_times : scheduleData.schedule.period_times;
     const currentMinutes = timeToMinutes(currentTime);
     
     // Create array of all periods with their times
@@ -194,7 +162,7 @@ function formatMinutes(minutes) {
 
 // Get next school day info
 function getNextSchoolDayInfo() {
-    let nextDay = new Date();
+    let nextDay  = new Date();
     nextDay.setDate(nextDay.getDate() + 1); // Start with tomorrow
     
     // Keep looking until we find a school day (max 14 days to avoid infinite loop)
@@ -205,13 +173,11 @@ function getNextSchoolDayInfo() {
             const holiday = isHoliday(nextDay, scheduleData);
             if (!holiday) {
                 // This is a school day!
-                const dayType = calculateDayType(nextDay, scheduleData);
                 const dayName = getDayName(nextDay);
                 const isToday = i === 0; // tomorrow is index 0
-                
+
                 return {
                     date: nextDay,
-                    dayType: dayType,
                     dayName: dayName,
                     isToday: isToday,
                     daysAway: i + 1
@@ -251,9 +217,9 @@ function updateDisplay() {
         const nextSchoolDay = getNextSchoolDayInfo();
         if (nextSchoolDay) {
             if (nextSchoolDay.daysAway === 1) {
-                nextPeriod.textContent = `Tomorrow (${nextSchoolDay.dayName}) is ${nextSchoolDay.dayType} day`;
+                nextPeriod.textContent = `Tomorrow is ${nextSchoolDay.dayName}`;
             } else {
-                nextPeriod.textContent = `Next school day: ${nextSchoolDay.dayName} is ${nextSchoolDay.dayType} day`;
+                nextPeriod.textContent = `Next school day: ${nextSchoolDay.dayName}`;
             }
         } else {
             nextPeriod.textContent = "";
@@ -272,9 +238,9 @@ function updateDisplay() {
         const nextSchoolDay = getNextSchoolDayInfo();
         if (nextSchoolDay) {
             if (nextSchoolDay.daysAway === 1) {
-                nextPeriod.textContent = `Tomorrow (${nextSchoolDay.dayName}) is ${nextSchoolDay.dayType} day`;
+                nextPeriod.textContent = `Tomorrow is ${nextSchoolDay.dayName}`;
             } else {
-                nextPeriod.textContent = `Next school day: ${nextSchoolDay.dayName} is ${nextSchoolDay.dayType} day`;
+                nextPeriod.textContent = `Next school day: ${nextSchoolDay.dayName}`;
             }
         } else {
             nextPeriod.textContent = "";
@@ -284,25 +250,18 @@ function updateDisplay() {
     
     // Check for special schedule
     const specialSchedule = getSpecialSchedule(now, scheduleData);
-    
-    // Calculate day type (A or B)
-    const dayType = calculateDayType(now, scheduleData);
-    
+
     // Show special schedule notice if applicable
     if (specialSchedule) {
         whatDay.textContent = `${specialSchedule.name}`;
         document.body.style.backgroundColor = "#ffa500"; // Orange for special days
     } else {
-        whatDay.textContent = `${dayType} day`;
-        if (dayType === "A") {
-            document.body.style.backgroundColor = "#eb1d25"
-        } else if (dayType === "B") {
-            document.body.style.backgroundColor = "#bffcf9"
-        }
+        whatDay.textContent = getDayName(now);
+        document.body.style.backgroundColor = "#bffcf9";
     }
-    
+
     // Get current period info (pass special schedule if it exists)
-    const periodInfo = getCurrentPeriodInfo(dayType, currentTime, specialSchedule);
+    const periodInfo = getCurrentPeriodInfo(currentTime, specialSchedule);
     
     if (periodInfo.current) {
         // Currently in a period
@@ -358,9 +317,9 @@ function updateDisplay() {
         const nextSchoolDay = getNextSchoolDayInfo();
         if (nextSchoolDay) {
             if (nextSchoolDay.daysAway === 1) {
-                nextPeriod.textContent = `Tomorrow (${nextSchoolDay.dayName}) is ${nextSchoolDay.dayType} day`;
+                nextPeriod.textContent = `Tomorrow is ${nextSchoolDay.dayName}`;
             } else {
-                nextPeriod.textContent = `Next school day: ${nextSchoolDay.dayName} is ${nextSchoolDay.dayType} day`;
+                nextPeriod.textContent = `Next school day: ${nextSchoolDay.dayName}`;
             }
         } else {
             nextPeriod.textContent = "";

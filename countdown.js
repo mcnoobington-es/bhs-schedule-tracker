@@ -43,13 +43,13 @@ function updateCountdown() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const endDate = new Date(2026, 5, 17); // June 17, 2026
+    const endDate = new Date(2027, 5, 16); // June 16, 2027
 
     const daysLeft = countSchoolDays(today, endDate);
     document.getElementById('countdown-number').textContent = daysLeft;
 
-    // Calculate progress bar based on full school year (Sept 1, 2025 -> July 17, 2026)
-    const schoolYearStart = new Date(2025, 8, 1); // September 1, 2025
+    // Calculate progress bar based on full school year (Sept 1, 2026 -> July 17, 2026)
+    const schoolYearStart = new Date(2026, 8, 1); // September 1, 2026
     const totalDays = countSchoolDays(schoolYearStart, endDate);
     const daysPassed = totalDays - daysLeft;
     const progressPct = totalDays > 0 ? Math.round((daysPassed / totalDays) * 100) : 0;

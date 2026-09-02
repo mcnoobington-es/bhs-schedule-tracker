@@ -2,62 +2,52 @@
   "school_info": {
     "name": "Barcelona High School",
     "academic_year": "2025-2026",
-    "schedule_type": "alternating_ab"
+    "schedule_type": "regular"
   },
-  
+
   "schedule_config": {
-    "cycle_start_date": "2026-03-27",
-    "first_day_type": "A",
     "weekdays_only": true
   },
-  
-  "day_types": {
-    "A": {
-      "name": "A Day",
-      "periods": [1, 2, 3],
-      "period_times": {
-        "homeroom": {"start": "09:15", "end": "09:30"},
-        "passing_period_1": {"start": "09:30", "end": "09:40"},
-        "1": {"start": "09:40", "end": "11:00"},
-        "passing_period_2": {"start": "11:00", "end": "11:10"},
-        "2": {"start": "11:10", "end": "12:30"},
-        "lunch": {"start": "12:30", "end": "13:25"},
-        "3": {"start": "13:25", "end": "14:45"}
-      }
-    },
-    "B": {
-      "name": "B Day",
-      "periods": [4, 5, 6],
-      "period_times": {
-        "homeroom": {"start": "09:15", "end": "09:30"},
-        "passing_period_1": {"start": "09:30", "end": "09:40"},
-        "4": {"start": "09:40", "end": "11:00"},
-        "passing_period_2": {"start": "11:00", "end": "11:10"},
-        "5": {"start": "11:10", "end": "12:30"},
-        "lunch": {"start": "12:30", "end": "13:25"},
-        "6": {"start": "13:25", "end": "14:45"}
-      }
+
+  "schedule": {
+    "name": "Regular Day",
+    "periods": [1, 2, 3, 4],
+    "period_times": {
+      "1": {"start": "09:05", "end": "10:15"},
+      "passing_period_1": {"start": "10:15", "end": "10:20"},
+      "homeroom": {"start": "10:20", "end": "10:35"},
+      "passing_period_2": {"start": "10:35", "end": "10:40"},
+      "2": {"start": "10:40", "end": "11:50"},
+      "lunch": {"start": "11:50", "end": "12:40"},
+      "3": {"start": "12:40", "end": "13:50"},
+      "passing_period_3": {"start": "13:50", "end": "13:55"},
+      "4": {"start": "13:55", "end": "15:05"}
     }
   },
   
   "holidays": [
     {
-      "date": "2025-09-24",
+      "date": "2026-09-11",
+      "name": "La Diada",
+      "type": "federal_holiday"
+    },
+    {
+      "date": "2026-09-24",
       "name": "La Mercè",
       "type": "federal_holiday"
     },
     {
-      "date": "2025-10-27",
-      "name": "No School",
-      "type": "school_holiday"
+      "date": "2026-10-12",
+      "name": "La Hispanidad",
+      "type": "federal_holiday"
     },
     {
-      "date": "2025-11-27",
+      "date": "2026-11-26",
       "name": "Thanksgiving Break",
       "type": "school_holiday"
     },
     {
-      "date": "2025-11-28",
+      "date": "2026-11-27",
       "name": "Thanksgiving Break",
       "type": "school_holiday"
     },
