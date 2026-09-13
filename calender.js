@@ -1,8 +1,8 @@
-const image = document.getElementById("image_display")
-const selection = document.getElementById("month_select")
+// const image = document.getElementById("image_display")
+// const selection = document.getElementById("month_select")
 const hamburger = document.getElementById('hamburger');
 const wrapper = document.getElementById('wrapper');
-let currentMonth = new Date().getMonth();
+/* let currentMonth = new Date().getMonth();
 let month
 
 if (currentMonth == 0) {
@@ -26,7 +26,31 @@ if (currentMonth == 0) {
 } else if (currentMonth == 11) {
     month = "december"
 } 
-image.src = `schedule/${month}.png`
+image.src = `schedule/${month}.png` */
+
+// Show the slide for the current month by default.
+// Slide 1 = September, 2 = October, ... 10 = June, 11 = key.
+// Slides are ordered p1 (first slide) through p11 (key) in the published deck.
+const calendarFrame = document.getElementById('calendar-frame');
+if (calendarFrame) {
+    const monthToSlide = {
+        8: 1,  // September
+        9: 2,  // October
+        10: 3, // November
+        11: 4, // December
+        0: 5,  // January
+        1: 6,  // February
+        2: 7,  // March
+        3: 8,  // April
+        4: 9,  // May
+        5: 10  // June
+    };
+
+    const currentMonth = new Date().getMonth();
+    const slideNumber = monthToSlide[currentMonth] || 1; // default to the key during summer break
+
+    calendarFrame.src += `&slide=id.p${slideNumber}`;
+}
 
 if (hamburger) {
     hamburger.addEventListener('click', function() {
@@ -58,6 +82,7 @@ if (hamburger) {
     });
 }
 
+/*
 function updateImage() {
     if (selection.value == "september"){
         image.src = "schedule/september.png"
@@ -82,5 +107,5 @@ function updateImage() {
     } else{
         image.src = `schedule/${month}.png`
     }
-}
+} */
 
